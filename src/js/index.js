@@ -1,4 +1,4 @@
-import snackbar from "snackbar";
+// import snackbar from "snackbar";
 
 const BALANCE = document.querySelector('#balance');
 const MONEY_PLUS = document.querySelector('#money-plus');
@@ -34,7 +34,8 @@ function addTransaction(e) {
   e.preventDefault();
 
   if (TEXT.value.trim() === '' || AMOUNT.value.trim() === '') {
-    snackbar.show('Please add a text and amount');
+    alert('Please add a text and amount');
+    // snackbar.show('Please add a text and amount');
   } else {
     const transaction = {
       id: generateID(),
@@ -73,8 +74,10 @@ function addTransactionToDOM(transaction) {
   item.classList.add(transaction.amount < 0 ? 'minus' : 'plus');
 
   item.innerHTML = `
-    ${transaction.text} <span>${sign}${Math.abs(transaction.amount)}</span>
-    <button class='delete-btn' onlick='removeTransaction(${transaction.id})'>x</button>
+    ${transaction.text} <span>${sign}${Math.abs(
+    transaction.amount
+  )}</span> <button class="delete-btn" onclick="removeTransaction(${transaction.id
+    })">x</button>
   `;
 
   LIST.appendChild(item);
